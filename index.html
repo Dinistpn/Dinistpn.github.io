@@ -15,20 +15,20 @@
                 <div className="input-group-prepend">
                   <div className="input-group-text" id="btnGroupAddon">{this.state.num1} + {this.state.num2}</div>
                   </div>
-                  <input onKeyPress={this.inputKey} onChange={this.upadateAnswer} value={this.state.answer} className="form-control" aria-label="Input group example"></input>
                   <div className="containerA"></div>
-                  <div className="input-group-text" id="btnGroupAddon">Score is: {this.state.count}</div>
                 </div>
+                <input onKeyPress={this.inputKey} onChange={this.upadateAnswer} value={this.state.answer} className="form-control" aria-label="Input group example"></input>
+                <div className="input-group-text" id="btnGroupAddon">Score is: {this.state.count}</div>
               </>
             );
           }
         
         upadateAnswer = (event) => {
           this.setState({
-            answer:event.target.value
-          })
+            answer: event.target.value
+          });
         }
-        upadateAnswer = (event) => {
+        inputKey = (event) => {
           if(event.key === "Enter"){
             const answer2 = parseINT(this.state.answer);
             if(answer2 = this.state.num1 +  this.state.num2){
