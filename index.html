@@ -1,8 +1,8 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script><script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script><script src="https://unpkg.com/@babel/standalone/babel.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><meta name="description" content="Web site created using create-react-app"/><title>React App</title><script defer="defer" src="/reactapp/static/js/main.7f161607.js"></script><link href="/reactapp/static/css/main.da16d17d.css" rel="stylesheet"></head><body><div id="appDiv"></div><script type="text/babel">class App extends React.Component {
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script><script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script><script src="https://unpkg.com/@babel/standalone/babel.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><meta name="description" content="Web site created using create-react-app"/><title>React App</title><script defer="defer" src="/reactapp/static/js/main.8aeffdd2.js"></script><link href="/reactapp/static/css/main.da16d17d.css" rel="stylesheet"></head><body><div id="root"></div><div id="appContainer"></div><script type="text/babel">class App2 extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
-              count: 1,
+              count: 0,
               num1: 1,
               num2: 2,
               answer: ""
@@ -11,13 +11,24 @@
         render() {
             return (
               <>
-              <p>Hello world!</p><div className="input-group">
+              <h2>Try some Sums</h2>
+              <div className="input-group">
                 <div className="input-group-prepend">
                   <div className="input-group-text" id="btnGroupAddon">{this.state.num1} + {this.state.num2}</div>
                   </div>
                   <div className="containerA"></div>
                 </div>
                 <input onKeyPress={this.inputKey} onChange={this.upadateAnswer} value={this.state.answer} className="form-control" aria-label="Input group example"></input>
+                <div className="input-group-text" id="btnGroupAddon">Score is: {this.state.count}</div>
+                <div className="containerA">---</div>
+                <h2>Try some Multiplication</h2>
+                <div className="input-group">
+                <div className="input-group-prepend">
+                  <div className="input-group-text" id="btnGroupAddon">{this.state.num1} * {this.state.num2}</div>
+                  </div>
+                  <div className="containerA"></div>
+                </div>
+                <input onKeyPress={this.inputKeyMult} onChange={this.upadateAnswer} value={this.state.answer} className="form-control" aria-label="Input group example"></input>
                 <div className="input-group-text" id="btnGroupAddon">Score is: {this.state.count}</div>
               </>
             );
@@ -30,10 +41,10 @@
         }
         inputKey = (event) => {
           if(event.key === "Enter"){
-            const answer2 = parseINT(this.state.answer);
-            if(answer2 = this.state.num1 +  this.state.num2){
+            let answer2 = parseInt(this.state.answer);
+            if(answer2 == this.state.num1 +  this.state.num2){
               this.setState(state =>({
-                count: state.score + 1,
+                count: state.count + 1,
                 num1: Math.ceil(Math.random() * 10),
                 num2: Math.ceil(Math.random() * 10),
                 answer: ""
@@ -41,10 +52,31 @@
             }
             else{
               this.setState({
-                answer: ""
+                answer: "",
               });
+              alert("Try again");
+            }
+          }
+        }
+        inputKeyMult = (event) => {
+          if(event.key === "Enter"){
+            let answer2 = parseInt(this.state.answer);
+            if(answer2 == this.state.num1 * this.state.num2){
+              this.setState(state =>({
+                count: state.count + 1,
+                num1: Math.ceil(Math.random() * 10),
+                num2: Math.ceil(Math.random() * 10),
+                answer: ""
+              }));
+            }
+            else{
+              this.setState({
+                answer: "",
+              });
+              alert("Try again");
             }
           }
         }
       }
-        ReactDOM.render(<App />, document.querySelector("#appDiv"))</script></body></html>
+      const root = ReactDOM.createRoot(document.getElementById('appContainer'));
+      root.render(<App2 />);</script></body></html>
