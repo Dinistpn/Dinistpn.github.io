@@ -5,7 +5,11 @@
               count: 0,
               num1: 1,
               num2: 2,
-              answer: ""
+              answer: "",
+              countM: 0,
+              num1M: 1,
+              num2M: 2,
+              answerM: ""
             }
           }
         render() {
@@ -24,12 +28,12 @@
                 <h2>Try some Multiplication</h2>
                 <div className="input-group">
                 <div className="input-group-prepend">
-                  <div className="input-group-text" id="btnGroupAddon">{this.state.num1} * {this.state.num2}</div>
+                  <div className="input-group-text" id="btnGroupAddon">{this.state.num1M} * {this.state.num2M}</div>
                   </div>
                   <div className="containerA"></div>
                 </div>
-                <input onKeyPress={this.inputKeyMult} onChange={this.upadateAnswer} value={this.state.answer} className="form-control" aria-label="Input group example"></input>
-                <div className="input-group-text" id="btnGroupAddon">Score is: {this.state.count}</div>
+                <input onKeyPress={this.inputKeyMult} onChange={this.upadateAnswerM} value={this.state.answerM} className="form-control" aria-label="Input group example"></input>
+                <div className="input-group-text" id="btnGroupAddon">Score is: {this.state.countM}</div>
               </>
             );
           }
@@ -37,6 +41,11 @@
         upadateAnswer = (event) => {
           this.setState({
             answer: event.target.value
+          });
+        }
+        upadateAnswerM = (event) => {
+          this.setState({
+            answerM: event.target.value
           });
         }
         inputKey = (event) => {
@@ -60,18 +69,18 @@
         }
         inputKeyMult = (event) => {
           if(event.key === "Enter"){
-            let answer2 = parseInt(this.state.answer);
-            if(answer2 == this.state.num1 * this.state.num2){
+            let answer2 = parseInt(this.state.answerM);
+            if(answer2 == this.state.num1M * this.state.num2M){
               this.setState(state =>({
-                count: state.count + 1,
-                num1: Math.ceil(Math.random() * 10),
-                num2: Math.ceil(Math.random() * 10),
-                answer: ""
+                countM: state.countM + 1,
+                num1M: Math.ceil(Math.random() * 10),
+                num2M: Math.ceil(Math.random() * 10),
+                answerM: ""
               }));
             }
             else{
               this.setState({
-                answer: "",
+                answerM: "",
               });
               alert("Try again");
             }
